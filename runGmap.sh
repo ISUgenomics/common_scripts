@@ -9,10 +9,10 @@
 #sh run_gmap.sh Crassostreagigasgenome /work/GIF/remkv6/Serb/03_DavideGMAP Crassostreagigasgenome.fa DavideQuerydna.fasta
 
 
-module load gsnap
+module load gmap-gsnap/2018-03-25-qa3kh3t
 dbname=$1
 dbloc=$2
 dbfasta=$3
 query=$4
 gmap_build -d $dbname  -D $dbloc $dbfasta
-gmap -D $dbloc -d $dbname -B 5 -t 16  --input-buffer-size=1000000 --output-buffer-size=1000000 -f psl  $query >${dbname%.*}.${query%.*}.psl
+gmap -D $dbloc -d $dbname -B 5 -t 16  --input-buffer-size=1000000 --output-buffer-size=1000000 -f gff3_gene  $query >${dbname%.*}.${query%.*}.gff3
