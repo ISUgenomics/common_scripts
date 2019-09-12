@@ -8,7 +8,7 @@ function printUsage () {
 
 Synopsis
 
-    $scriptName [-h | --help] fastq_file1 [fastq_file2 fastq_file3 ..] || *.fastq[.gz]
+    $scriptName [-h | --help] [-b | --base-count] fastq_file1 [fastq_file2 fastq_file3 ..] || *.fastq[.gz]
 
 Description
 
@@ -18,8 +18,11 @@ Description
         -h, --help
         Brings up this help page
 
+        -b, --base-count
+        include base counts along with number of reads
+
 	fastq_file
-	A standard fastq file with any extension [but not compressed] 
+	A standard fastq file with any extension [but not compressed]
 
 Author
 
@@ -78,8 +81,7 @@ sed -r '
   :L
   s=([0-9]+)([0-9]{3})=\1,\2=
   t L'
-fi
-
+else
 lines=$(wc -l $i|cut -d " " -f 1)
 count=$(($lines / 4))
 echo -n -e "\t$i : "
@@ -88,5 +90,6 @@ sed -r '
   :L
   s=([0-9]+)([0-9]{3})=\1,\2=
   t L'
+fi
 done
 
