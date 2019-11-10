@@ -62,10 +62,14 @@ else:
         w.write("sleep 10\n")
         w.write("done\n")
         w.write("date\n")
+        w.write("module purge\n")
+        w.write("module load parallel\n")
+        w.write("parallel -j 1 --joblog "+jobname+"_progress_"+str(filecount)+".log --workdir $PWD <<FIL\n")
         count = 0
         while (count < numcmds):
            w.write(cmd[count])
            count = count + 1
+        w.write("FIL\n")
         w.write("RC=1\n")
         w.write("date\n")
         w.write("while [[ $RC -ne 0 ]]; do\n")
