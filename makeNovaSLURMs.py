@@ -52,9 +52,7 @@ else:
         w.write("cd $SLURM_SUBMIT_DIR\n")
         w.write("ulimit -s unlimited\n")
         w.write("module purge\n")
-        w.write("module use /opt/rit/spack-modules/lmod/linux-rhel7-x86_64/Core\n")
-        w.write("module use /opt/rit/spack-modules/lmod/linux-rhel7-x86_64/gcc/7.3.0\n")
-        w.write("#module use /work/GIF/software/modules\n")
+        w.write("source /work/LAS/mhufford-lab/arnstrm/miniconda/etc/profile.d/conda.sh\n")
         count = 0
         while (count < numcmds):
            w.write(cmd[count])

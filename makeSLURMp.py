@@ -41,7 +41,7 @@ else:
         w = open(jobname+'_'+str(filecount)+'.sub','w')
         w.write("#!/bin/bash\n")
         w.write("#SBATCH -N 1\n")
-        w.write("#SBATCH --ntasks-per-node=16\n")
+        w.write("#SBATCH -n 36\n")
         w.write("#SBATCH -t 96:00:00\n")
         w.write("#SBATCH -J "+jobname+"_"+str(filecount)+"\n")
         w.write("#SBATCH -o "+jobname+"_"+str(filecount)+".o%j\n")
@@ -51,11 +51,9 @@ else:
         w.write("#SBATCH --mail-type=end\n")
         w.write("cd $SLURM_SUBMIT_DIR\n")
         w.write("ulimit -s unlimited\n")
-        w.write("module use /opt/rit/spack-modules/lmod/linux-rhel7-x86_64/Core\n")
-        w.write("module use /opt/rit/spack-modules/lmod/linux-rhel7-x86_64/gcc/7.3.0\n")
+        w.write("source /work/LAS/mhufford-lab/arnstrm/miniconda/etc/profile.d/conda.sh\n")
         w.write("module purge\n")
-        w.write("#module use /work/GIF/software/modules\n")
-        w.write("module load parallel gatk\n")
+        w.write("module load parallel\n")
         w.write("parallel -j 1 --joblog "+jobname+"_progress_"+str(filecount)+".log --workdir $PWD <<FIL\n")
         count = 0
         while (count < numcmds):
