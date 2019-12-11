@@ -17,6 +17,12 @@ info=${bldwht}*${txtrst}
 pass=${bldblu}*${txtrst}
 warn=${bldred}!${txtrst}
 
+
+if [ "$#" -ne 1 ]; then
+xclip -in -selection primary 
+echo -e "$pass ${txtund}"${filename##*/}"${txtrst} copied to clipboard"
+else
+
 filename=$@
 
 # Display usage if full argument isn't given
@@ -38,5 +44,6 @@ if [[ $(whoami) == root ]]; then
 fi
 
 # Copy file to clipboard, give feedback
-xclip -in -selection c < "$filename"
+xclip -in -selection primary < "$filename"
 echo -e "$pass ${txtund}"${filename##*/}"${txtrst} copied to clipboard"
+fi
