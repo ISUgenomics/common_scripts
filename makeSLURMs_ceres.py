@@ -16,7 +16,10 @@ will create bowtie2_N.sub files, where N equals to number of lines in bowtie2.cm
 If you have large number of commands that you would like to package (a set number) in a single
 PBS script file, you can run this script along with desired number of commands per job.
 Note that all commands will run in serially with this script (s suffix). If you want to run all commands at a time,
-parallel fashion, then use the p suffix script 
+parallel fashion, then use the p suffix script.
+
+
+PLEASE EDIT THIS SCRIPT TO INCLUDE THE RIGHT EMAIL! 
 
 Arun Seetharam
 arnstrm@iastate.edu
@@ -47,7 +50,7 @@ else:
         w.write("#SBATCH -J "+jobname+"_"+str(filecount)+"\n")
         w.write("#SBATCH -o "+jobname+"_"+str(filecount)+".o%j\n")
         w.write("#SBATCH -e "+jobname+"_"+str(filecount)+".e%j\n")
-        w.write("#SBATCH --mail-user=arnstrm@gmail.com\n")
+        w.write("#SBATCH --mail-user=email@gmail.com\n")
         w.write("#SBATCH --mail-type=BEGIN,END,FAIL\n")
         w.write("cd $SLURM_SUBMIT_DIR\n")
         w.write("ulimit -s unlimited\n")
