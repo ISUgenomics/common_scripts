@@ -12,7 +12,7 @@ awk '{sum=0; for (i=1; i<=NF; i++) { sum+= $i } print sum}'
 
 rowsum_count() # -c
 {
-awk '{sum=0; {for (i=1; i<=NF; i++) { if($i>0 && $i~/^[0-9]*$/) sum+= 1; }} print sum}'
+awk '{sum=0;sumc=0; {for (i=1; i<=NF; i++) { if($i>0 && $i~/^[0-9]*$/) sumc+= 1; }} for (i=1; i<=NF; i++) { sum+= $i }   print $0,sum,sumc}'
 }
 
 usage() # -h
