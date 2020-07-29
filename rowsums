@@ -17,14 +17,14 @@ awk '{sum=0; {for (i=1; i<=NF; i++) { if($i>0 && $i~/^[0-9]*$/) sum+= 1; }} prin
 
 usage() # -h
 {
-cat <<HELP 
+
+cat <<HELP
 usage: rowsums [OPTION...] 
 	-h, 		This help page
 	-n,		Print only the rowsums and not the original row + rowsum
 	-c,		Print the rowsum as the total number of elements that have a value > 0 rather than the sum of those values 
 	 		Default with no option prints the row then the sum at the end
-HELP 
-
+HELP
 exit
 }
 
