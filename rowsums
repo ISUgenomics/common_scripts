@@ -1,0 +1,34 @@
+#!/bin/bash
+
+rowsum()
+{
+awk '{sum=0; for (i=1; i<=NF; i++) { sum+= $i } print $0,sum}'
+}
+
+rowsum_only()
+{
+awk '{sum=0; for (i=1; i<=NF; i++) { sum+= $i } print sum}'
+}
+
+usage()
+{
+echo "usage: rowsums [-h help] [-n only the rowsum]"
+echo "default prints the row then the sum at the end"
+exit
+}
+
+### Main
+
+#defaults here
+
+while getopts 'h|n' option
+do
+	case ${option} in
+		h) usage ;;
+		n) rowsum_only;exit ;;
+	esac
+done
+
+rowsum
+
+
