@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# use multiqc -p . 
+# the -p will generate the required plots
+# then add the png folder to the multiqc_data folder and it works.
+
 
 png=multiqc_data/png
 
