@@ -7,7 +7,7 @@
 
 png=multiqc_data/png
 
-cat <<MDFile > QC-results.md
+cat <<MDFile > 01b_QC-results.md
 # QC
 ## Report
 ### Sequence Quality Histograms
@@ -41,11 +41,11 @@ The cumulative percentage count of the proportion of your library which has seen
 ![adapter content]($png/mqc_fastqc_adapter_content_plot_1.png)
 MDFile
 
-echo "## General Stats" >> QC-results.md
-cat ./multiqc_data/multiqc_general_stats.txt | md  >> 01B-QC-results.md
+echo "## General Stats" >> 01b_QC-results.md
+cat ./multiqc_data/multiqc_general_stats.txt | md  >> 01B-01b_QC-results.md
 
-echo >> QC-results.md
+echo >> 01b_QC-results.md
 
-echo "## FastQC Stats" >> QC-results.md
-cat ./multiqc_data/multiqc_fastqc.txt |tr -s " " "-" | md  >> QC-results.md
+echo "## FastQC Stats" >> 01b_QC-results.md
+cat ./multiqc_data/multiqc_fastqc.txt |tr -s " " "-" | md  >> 01b_QC-results.md
 #I had to replace spaces with `-` in order to get the correct number of feilds in awk! I used md (from common_scripts)
