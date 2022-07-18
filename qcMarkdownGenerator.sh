@@ -5,7 +5,7 @@
 # then add the png folder to the multiqc_data folder and it works.
 
 
-png=multiqc_data/png
+png=multiqc_plots/png
 
 cat <<MDFile > 01b_QC-results.md
 # QC
