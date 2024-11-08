@@ -42,7 +42,7 @@ The cumulative percentage count of the proportion of your library which has seen
 MDFile
 
 echo "## General Stats" >> 01b_QC-results.md
-cat ./multiqc_data/multiqc_general_stats.txt | md  >> 01B-01b_QC-results.md
+cat ./multiqc_data/multiqc_general_stats.txt | md  >> 01b_QC-results.md
 
 echo >> 01b_QC-results.md
 
