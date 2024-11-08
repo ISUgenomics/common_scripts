@@ -1,23 +1,24 @@
 #!/bin/bash
-module load GIF2/jellyfish/2.2.5
-set +o posix
-readR1=$1 
-readR2=$2
-kmer=$3
-baseName=$4
-###############################################
-#paste <(ls -1 *R1*) <(ls -1 *R2*)  |awk '{print $1,$2,"21",$1}' |sed 's/\./\t/5' |awk '{print "sh runGenomeScope.sh "$1,$2,$3,$4}' >jellyfish.sh
-#the above creates the sh script 
-#sh runGenomeScope.sh 312_S59_R1.fq.gz 312_S59_R2.fq.gz 21 312_S59_R1
-#sh runGenomeScope.sh 314_S67_R1.fq.gz 314_S67_R2.fq.gz 21 314_S67_R1
 
-###############################################
+# runGenomeScope R1Read R2read 21
 
+readR1=$1
+#readR2=$2
+kmer=$2
+outName=$(basename $1 .gz)
+outName=${outName}_${kmer}
 
-jellyfish count -C -m $kmer -s 1000000000 -t 10 <(zcat ${readR1} ${readR2}) -o ${baseName}_K${kmer}.jf  ;\
-jellyfish histo -t 16 ${baseName}_K${kmer}.jf > ${baseName}_K${kmer}.histo ; \
+module load jellyfish/2.2.7-py2-euxjh7e
+jellyfish count -C -m ${kmer} -s 3000000000 -t 30 <(zcat ${readR1} ${readR2}) -o $outName.jf
+# Create histogram from that data
 
+jellyfish histo -t 36 ${outName}.jf > ${outName}.hist
 
-
+# Run genomescope with hist or
 # once the histo file is created, visit http://qb.cshl.edu/genomescope/ website to upload the histo file
 
+module use /work/gif/modules/software/
+module load genomescope2.0
+module load r
+
+genomescope.R -i ${outName}.hist --max_kmercov 1000 -k 21 -o ${outName}_genomescope_out -p 2 --fitted_hist

@@ -1,4 +1,7 @@
 #!/bin/bash
 
 tar -cf - $1 | pigz -2 -R > $1.tar.gz &
+wait
+echo "$1 done"
+
 

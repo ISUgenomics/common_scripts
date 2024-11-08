@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#add a path to your PATH variable quickly
+
+export PATH=$PATH:$1
+echo $PATH
