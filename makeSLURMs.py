@@ -25,7 +25,7 @@ arnstrm@iastate.edu
 import sys
 import os
 if len(sys.argv)<3:
-    print Usage
+    print(Usage)
 else:
    cmdargs = str(sys.argv)
    cmds = open(sys.argv[2],'r')
@@ -48,17 +48,17 @@ else:
         w.write("#SBATCH -e "+jobname+"_"+str(filecount)+".e%j\n")
         w.write("#SBATCH --mail-user=arnstrm@gmail.com\n")
         w.write("#SBATCH --mail-type=begin\n")
-        w.write("#SBATCH --mail-type=end\n")
+        w.write("#SBATCH --mail-type=end\n\n")
         w.write("cd $SLURM_SUBMIT_DIR\n")
         w.write("ulimit -s unlimited\n")
         w.write("module purge\n")
         w.write("module use /opt/rit/spack-modules/lmod/linux-rhel7-x86_64/Core\n")
         w.write("module use /opt/rit/spack-modules/lmod/linux-rhel7-x86_64/gcc/7.3.0\n")
-        w.write("#module use /work/GIF/software/modules\n")
+        w.write("#module use /work/GIF/software/modules\n\n")
         count = 0
         while (count < numcmds):
            w.write(cmd[count])
            count = count + 1
-        w.write("scontrol show job $SLURM_JOB_ID\n")
+        w.write("\nscontrol show job $SLURM_JOB_ID\n")
         w.close()
         filecount += 1
