@@ -12,33 +12,33 @@ cat <<MDFile > 01b_QC-results.md
 ## Report
 ### Sequence Quality Histograms
 The mean quality value across each base position in the read.
-![Mean Quality Score]($png/mqc_fastqc_per_sequence_quality_scores_plot_1.png)
+![Mean Quality Score]($png/fastqc_per_sequence_quality_scores_plot.png)
 
 ### Per Sequence Quality Scores
 The number of reads with average quality scores. Shows if a subset of reads has poor quality.
-![Per Seq QC]($png/mqc_fastqc_per_sequence_quality_scores_plot_1.png)
+![Per Seq QC]($png/fastqc_per_sequence_quality_scores_plot.png)
 
 ### Per Base Sequence Content
 The proportion of each base position for which each of the four normal DNA bases has been called.
-![Per BAse Seq Content]($png/mqc_fastqc_per_base_sequence_quality_plot_1.png)
+![Per BAse Seq Content]($png/fastqc_per_base_sequence_quality_plot.png)
 
 ### Per Sequence GC Content
 The average  GC content of reads. Normal random library typically have a roughly normal distribution of GC content.
-![Per Seq GC content]($png/mqc_fastqc_per_sequence_gc_content_plot_Counts.png)
+![Per Seq GC content]($png/fastqc_per_sequence_gc_content_plot_Counts.png)
 
 ### Per Base N Content
 The percentage of bases calles at each position for which an N was called.
-![Per base N content]($png/mqc_fastqc_per_base_sequence_quality_plot_1.png)
+![Per base N content]($png/fastqc_per_base_sequence_quality_plot.png)
 
 ### Sequence legth distribution
 
 ### Sequence Duplication Levels
 The relative level of duplication found for every sequence.
-![Seq duplicate levels]($png/mqc_fastqc_sequence_duplication_levels_plot_1.png)
+![Seq duplicate levels]($png/fastqc_sequence_duplication_levels_plot.png)
 
 ### Adapter Content
 The cumulative percentage count of the proportion of your library which has seen each of the adapter sequences at each position.
-![adapter content]($png/mqc_fastqc_adapter_content_plot_1.png)
+![adapter content]($png/fastqc_adapter_content_plot.png)
 MDFile
 
 echo "## General Stats" >> 01b_QC-results.md
